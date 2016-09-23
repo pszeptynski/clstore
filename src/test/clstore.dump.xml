@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="test">
+	<table_data name="Ankieta">
+	<row>
+		<field name="id">1</field>
+		<field name="nazwa_ankiety">ankietka</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="nazwa_ankiety">Nowa ankieta</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="nazwa_ankiety">Nowa ankieta</field>
+	</row>
+	<row>
+		<field name="id">4</field>
+		<field name="nazwa_ankiety">Nowa ankieta</field>
+	</row>
+	<row>
+		<field name="id">5</field>
+		<field name="nazwa_ankiety">Nowa ankieta</field>
+	</row>
+	<row>
+		<field name="id">6</field>
+		<field name="nazwa_ankiety">Nowa ankieta</field>
+	</row>
+	<row>
+		<field name="id">7</field>
+		<field name="nazwa_ankiety">Nowa ankieta</field>
+	</row>
+	</table_data>
+	<table_data name="Baskets">
+	<row>
+		<field name="id">1</field>
+		<field name="user_id">1</field>
+		<field name="product_id">1</field>
+		<field name="quantity">2</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="user_id">1</field>
+		<field name="product_id">2</field>
+		<field name="quantity">1</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="user_id">1</field>
+		<field name="product_id">3</field>
+		<field name="quantity">4</field>
+	</row>
+	</table_data>
+	<table_data name="Messages">
+	</table_data>
+	<table_data name="Odpowiedz">
+	</table_data>
+	<table_data name="Order_Products">
+	<row>
+		<field name="id">1</field>
+		<field name="order_id">1</field>
+		<field name="product_id">1</field>
+		<field name="quantity">2</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="order_id">1</field>
+		<field name="product_id">2</field>
+		<field name="quantity">4</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="order_id">1</field>
+		<field name="product_id">3</field>
+		<field name="quantity">5</field>
+	</row>
+	</table_data>
+	<table_data name="Photos">
+	</table_data>
+	<table_data name="Products">
+	<row>
+		<field name="id">1</field>
+		<field name="name">Talerz</field>
+		<field name="price">12.99</field>
+		<field name="description">Ladne, czyste talerze</field>
+		<field name="availability">10</field>
+	</row>
+	<row>
+		<field name="id">2</field>
+		<field name="name">Kubki</field>
+		<field name="price">5.99</field>
+		<field name="description">Nawet jeszcze nie uzywane</field>
+		<field name="availability">20</field>
+	</row>
+	<row>
+		<field name="id">3</field>
+		<field name="name">Miseczki</field>
+		<field name="price">8.99</field>
+		<field name="description">Rozmiar 65E</field>
+		<field name="availability">25</field>
+	</row>
+	</table_data>
+	<table_data name="Pytania">
+	</table_data>
+	<table_data name="Users">
+	<row>
+		<field name="id">1</field>
+		<field name="email">test@test.pl</field>
+		<field name="password">haslo123</field>
+		<field name="firstname">Imie</field>
+		<field name="lastname">Nazwisko</field>
+		<field name="is_admin">0</field>
+	</row>
+	<row>
+		<field name="id">6</field>
+		<field name="email">admin@admin.pl</field>
+		<field name="password">admin123</field>
+		<field name="firstname">Admin</field>
+		<field name="lastname">Kowalski</field>
+		<field name="is_admin">1</field>
+	</row>
+	</table_data>
+	<table_data name="orders">
+	<row>
+		<field name="id">1</field>
+		<field name="user_id">1</field>
+		<field name="state">0</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

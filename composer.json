@@ -1,0 +1,19 @@
+{
+    "name": "lukaszf/clstore",
+    "description": "Prosty sklep internetowy na Warsztaty Coders Lab",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "^5.5",
+        "phpunit/dbunit": "^2.0",
+        "phpmailer/phpmailer": "^5.2",
+        "league/oauth2-google": "^1.0"
+    },
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "flysugar",
+            "email": "l.flysugar@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

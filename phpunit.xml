@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+	colors="true"
+	bootstrap="./vendor/autoload.php"
+	backupGlobals="true"
+	verbose="true">
+
+	<php>
+		<var name="DB_DSN" value="mysql:dbname=test;host=localhost"/>
+		<var name="DB_USER" value="test"/>
+		<var name="DB_PASSWD" value="test"/>
+		<var name="DB_DBNAME" value="test"/>
+	</php>
+
+    <testsuites>
+        <testsuite name="clstore">
+            <directory>./src/test</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+
