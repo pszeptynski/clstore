@@ -13,13 +13,6 @@ class User {
 		$this->db = new PDO(DB_DSN, DB_USER, DB_PASSWD);
 	}
 
-	public function login($email, $password) {
-		if ($email==$this->email && $password==$this->password) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 	public function setId($id) {
 		$this->id = $id;
@@ -66,7 +59,7 @@ class User {
 						$sql = "INSERT INTO Users 
 									(email, password, firstname, lastname)
 								VALUES
-									(:email, :password, :firstname, :lastname)";
+									(:email, :password, :firstname, :lastname)"; // mechanizm z PDO z tymi dwukropkami "placeholder"
 						// przygotowujemy zapytanie dodania użytkownika do tablicy Users
 						$stmt = $this->db->prepare($sql);
 
@@ -77,7 +70,7 @@ class User {
 								array(
 									':email' 		=> $this->email,
 									':password'		=> $this->password,
-									':firstname'	=> $this->firstName,
+									':firstname'            => $this->firstName,
 									':lastname'		=> $this->lastName
 									)
 								);
@@ -104,7 +97,7 @@ class User {
 								array(
 									':email' 		=> $this->email,
 									':password'		=> $this->password,
-									':firstname'	=> $this->firstName,
+									':firstname'            => $this->firstName,
 									':lastname'		=> $this->lastName,
 									':id'			=> $this->id
 									)
@@ -132,7 +125,7 @@ class User {
 		$stmt = $this->db->prepare("SELECT 1 FROM Users WHERE email=:email");
 		try {
 			$stmt->execute( array(':email'	=> $email) );
-			if ( $stmt->rowCount() > 0 ) {
+			if ( $stmt->rowCount() > 0 ) { // user exists
 				return false;
 			} else {
 				return true;
@@ -178,7 +171,7 @@ class User {
 		try {
 			$stmt->execute( array(':id' => $id));
 			if ( $stmt->rowCount() > 0 ) { // uzytkownik istnieje
-	 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC); // do zmiany na listę obiektów
+	 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	 			$email = $results[0]['email'];
 	 			$password = $results[0]['password'];
 	 			$firstname = $results[0]['firstname'];
@@ -201,5 +194,53 @@ class User {
 	}
 
 	public static function deleteUser($id){}
-}
-?>
+
+
+	public static function login($email, $password) {
+            // dorobic wyszukanie w bazie itp. a nie to co ponizej
+            // jeśli jest user w bazie to wyciągnij metodą loadUSer i zwróć obiekt User
+            // jeśli nie, to to zwróć false, co dalej przekieruje na stronę rejestracji
+            // no własnie, false już tutaj czy Exception jak wszędzie?
+
+		$sql = "SELECT id FROM Users WHERE email=:email AND password=:password";
+		$db = new PDO(DB_DSN, DB_USER, DB_PASSWD);
+		$stmt = $db->prepare($sql);
+		try {
+			$stmt->execute( array(':email' => $email, ':password' => $password)); //set placeholders
+			if ( $stmt->rowCount() > 0 ) { // uzytkownik istnieje
+                                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	 			$id = $results[0]['id'];
+//                                return $id; // albo $id albo cały obiekt niżej, zobaczy się później
+                                return User::loadUser($id); // zwróć obiekt User załadowany metodą loadUser
+                        } else {
+                            throw new Exception("Użytkownik o podanym adresie i haśle nie istnieje");
+                        }
+                } catch(PDOException $ex) {
+                    // do obsłużenia, błąd podczas zapytania do bazy
+                }
+        }
+        
+//		if ($email==$this->email && $password==$this->password) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+
+
+// przykładowy kod do sprawdzania czy user istnieje przy logowaniu
+//    if ($user= User::login($email, $password)) {
+        // uzytkownik istenije
+        // $user - wszystkie jego dane
+//    } else {
+        // taki user nie istnieje
+        
+        
+    }
+
+    // zalogowany user jako obiekt, przez sesje przekazujemy do pozostałych stron
+    
+    // gdy user sie wylogowuje
+    // unset $_SESSION
+    // session_destroy();
+    
+??>
