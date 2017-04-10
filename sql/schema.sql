@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS test;
+CREATE DATABASE IF NOT EXISTS clstore_db;
 
-use test;
+use clstore_db;
 
 /* CLStore SQL Schema */
 

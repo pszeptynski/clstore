@@ -1,3 +1,12 @@
+<?php 
+// na każdej podstronie dodać na górze session_start();
+// i sprawdzać czy user zalogowany (w razie potrzeby)
+// można przekazywać id zalogowanego usera czystym tekstem, ale lepiej zrobić
+// to hashem md5
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

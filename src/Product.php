@@ -2,7 +2,7 @@
 class Product {
 	private $id;
 	private $name;
-	private $price;
+	private $price;  // decimal in SQL
 	private $description;
 	private $availability;
 	private $group;
@@ -18,11 +18,11 @@ class Product {
 	public function setAvailability($availability){}
 	public function getGroup(){}
 	public function setGroup($group){}
-	public function addPhoto($path_to_image){}
+	public function addPhoto($path_to_image){}  // path to file in db
 	public function getPhotos(){}
 
 	public static function getProductsList($group=null){}
-	public static function loadProduct($id){}
+	public static function loadProduct($id){} 
 	public static function deleteProduct($id){}
 }
 ?>
